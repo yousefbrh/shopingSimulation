@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,14 +15,18 @@ public class TypeWriterUI : MonoBehaviour
 	[SerializeField] string leadingChar = "";
 	[SerializeField] bool leadingCharBeforeDelay = false;
 
+	public Action onTypingFinished;
+
 	// Use this for initialization
-	void Start()
+
+	public void StartTyping(float delayTime)
 	{
 		_text = GetComponent<Text>()!;
 		_tmpProText = GetComponent<TMP_Text>()!;
-
+		delayBeforeStart = delayTime;
+		
 		if(_text != null)
-        {
+		{
 			writer = _text.text;
 			_text.text = "";
 
@@ -81,5 +86,7 @@ public class TypeWriterUI : MonoBehaviour
 		{
 			_tmpProText.text = _tmpProText.text.Substring(0, _tmpProText.text.Length - leadingChar.Length);
 		}
+		
+		onTypingFinished?.Invoke();
 	}
 }
