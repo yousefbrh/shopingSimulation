@@ -60,12 +60,20 @@ namespace UI
         {
             var targetCustom = equippedCustomIcons.Find(icon => icon.CustomType == colorModel.CustomType);
             customIcon.SetModel(targetCustom.GetColorModel());
+            var equippedRemoveTarget = _equippedColorModel.Find(model => 
+                model.CustomType == targetCustom.GetColorModel().CustomType && model.Color == targetCustom.GetColorModel().Color);
+            _equippedColorModel.Remove(equippedRemoveTarget);
+            _equippedColorModel.Add(colorModel);
+            var purchasedRemoveTarget = _purchasedColorModel.Find(model => model.Color == colorModel.Color && model.CustomType == colorModel.CustomType);
+            _purchasedColorModel.Remove(purchasedRemoveTarget);
+            _purchasedColorModel.Add(targetCustom.GetColorModel());
             targetCustom.SetModel(colorModel);
         }
 
         private void FillInventorySpots()
         {
             ClearInventorySpots();
+            choosingCustomIcons.Clear();
             var filterItems = _purchasedColorModel.FindAll(model => model.CustomType == _currentSection);
             if (filterItems.Count == 0) return;
             for (int i = 0; i < filterItems.Count; i++)
@@ -106,6 +114,8 @@ namespace UI
         {
             base.CloseDialog();
             ApplyCustomsOnPlayer();
+            InventoryManager.Instance.SetEquippedCustoms(_equippedColorModel);
+            InventoryManager.Instance.SetPurchasedCustoms(_purchasedColorModel);
             exitButton.onClick.RemoveAllListeners();
         }
     }

@@ -17,7 +17,7 @@ namespace UI
             var targetIcon = customIcons.Find(icon => icon.CustomType == colorModel.CustomType);
             _currentIcon = Instantiate(targetIcon, transform);
             _currentIcon.ApplyCustomChoosingAction();
-            targetIcon.SetModel(colorModel);
+            _currentIcon.SetModel(colorModel);
         }
 
         public void HideIcon()

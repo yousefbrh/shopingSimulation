@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DefaultNamespace;
 using Models;
 using UnityEngine;
 
@@ -35,7 +36,39 @@ namespace Managers
 
         private void GetInventoryData()
         {
-            
+            var savedData = Prefs.GetCustomData();
+            if (savedData == null) return;
+            _customData.CustomDataModels.Clear();
+            foreach (var model in savedData.CustomDataModels)
+            {
+                var data = new CustomDataModel()
+                {
+                    ColorModel = model.ColorModel,
+                    IsEquipped = model.IsEquipped,
+                    IsPurchased = model.IsPurchased
+                };
+                _customData.CustomDataModels.Add(data);
+            }
+        }
+
+        public void SetPurchasedCustoms(List<ColorModel> models)
+        {
+            foreach (var model in models)
+            {
+                var data = _customData.CustomDataModels.Find(dataModel => dataModel.ColorModel.Color == model.Color && dataModel.ColorModel.CustomType == model.CustomType);
+                data.IsEquipped = false;
+            }
+            Prefs.SaveCustomData(_customData);
+        }
+        
+        public void SetEquippedCustoms(List<ColorModel> models)
+        {
+            foreach (var model in models)
+            {
+                var data = _customData.CustomDataModels.Find(dataModel => dataModel.ColorModel.Color == model.Color && dataModel.ColorModel.CustomType == model.CustomType);
+                data.IsEquipped = true;
+            }
+            Prefs.SaveCustomData(_customData);
         }
 
         public List<ColorModel> GetPurchasedCustoms()

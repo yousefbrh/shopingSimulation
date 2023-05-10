@@ -1,9 +1,10 @@
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Models
 {
-    public class CustomData : MonoBehaviour
+    [Serializable]
+    public class SavingCustomData
     {
         public List<CustomDataModel> CustomDataModels = new List<CustomDataModel>();
     }
