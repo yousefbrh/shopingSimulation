@@ -50,7 +50,38 @@ namespace Components
             _shoesColorModel.Color = shoesSprite.First().color;
         }
 
-        public void ChangeHairColor(Color color)
+        public void ChangeCustom(CharacterColorModel characterColorModel)
+        {
+            foreach (var colorModel in characterColorModel.ColorModels)
+            {
+                switch (colorModel.CustomType)
+                {
+                    case CustomType.Hair:
+                        ChangeHairColor(colorModel.Color);
+                        break;
+                    case CustomType.Eyes:
+                        ChangeEyesColor(colorModel.Color);
+                        break;
+                    case CustomType.Skin:
+                        ChangeSkinsColor(colorModel.Color);
+                        break;
+                    case CustomType.Cloth:
+                        ChangeClothsColor(colorModel.Color);
+                        break;
+                    case CustomType.Trousers:
+                        ChangeTrousersColor(colorModel.Color);
+                        break;
+                    case CustomType.Shoes:
+                        ChangeShoesColor(colorModel.Color);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+            FillModels();
+        }
+
+        private void ChangeHairColor(Color color)
         {
             foreach (var hair in hairsSprite)
             {
@@ -58,7 +89,7 @@ namespace Components
             }
         }
         
-        public void ChangeEyesColor(Color color)
+        private void ChangeEyesColor(Color color)
         {
             foreach (var eye in eyesSprite)
             {
@@ -66,7 +97,7 @@ namespace Components
             }
         }
 
-        public void ChangeSkinsColor(Color color)
+        private void ChangeSkinsColor(Color color)
         {
             foreach (var skin in skinsSprite)
             {
@@ -74,7 +105,7 @@ namespace Components
             }
         }
 
-        public void ChangeClothsColor(Color color)
+        private void ChangeClothsColor(Color color)
         {
             foreach (var cloth in clothsSprite)
             {
@@ -82,7 +113,7 @@ namespace Components
             }
         }
         
-        public void ChangeTrousersColor(Color color)
+        private void ChangeTrousersColor(Color color)
         {
             foreach (var trousers in trousersSprite)
             {
@@ -90,7 +121,7 @@ namespace Components
             }
         }
         
-        public void ChangeShoesColor(Color color)
+        private void ChangeShoesColor(Color color)
         {
             foreach (var shoe in shoesSprite)
             {
