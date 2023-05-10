@@ -30,6 +30,11 @@ namespace Managers
             }
         }
 
+        private void Start()
+        {
+            InputManager.Instance.onInventoryCallsToOpen += OpenInventory;
+        }
+
         public void ShowTypingDialogPanel(DialogType type)
         {
             if (_openPanels.Count > 0) return;
@@ -44,6 +49,11 @@ namespace Managers
             cloneDialog.onDialogClosed += RemoveDialogFromOpenList;
             cloneDialog.Initialize(targetDialog.DialogText);
             _openPanels.Add(cloneDialog);
+        }
+
+        private void OpenInventory()
+        {
+            
         }
 
         private void RemoveDialogFromOpenList(Dialog dialog)
