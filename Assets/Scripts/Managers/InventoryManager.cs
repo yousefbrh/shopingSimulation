@@ -55,7 +55,7 @@ namespace Managers
         {
             foreach (var model in models)
             {
-                var data = _customData.CustomDataModels.Find(dataModel => dataModel.ColorModel.Color == model.Color && dataModel.ColorModel.CustomType == model.CustomType);
+                var data = _customData.CustomDataModels.Find(dataModel => dataModel.ColorModel.Color == model.Color && dataModel.ColorModel.objectsType == model.objectsType);
                 data.IsEquipped = false;
             }
             Prefs.SaveCustomData(_customData);
@@ -65,7 +65,7 @@ namespace Managers
         {
             foreach (var model in models)
             {
-                var data = _customData.CustomDataModels.Find(dataModel => dataModel.ColorModel.Color == model.Color && dataModel.ColorModel.CustomType == model.CustomType);
+                var data = _customData.CustomDataModels.Find(dataModel => dataModel.ColorModel.Color == model.Color && dataModel.ColorModel.objectsType == model.objectsType);
                 data.IsEquipped = true;
             }
             Prefs.SaveCustomData(_customData);
@@ -91,6 +91,20 @@ namespace Managers
             foreach (var dataModel in _customData.CustomDataModels)
             {
                 if (dataModel.IsPurchased && dataModel.IsEquipped)
+                {
+                    modelList.Add(dataModel.ColorModel);
+                }
+            }
+
+            return modelList;
+        }
+        
+        public List<ColorModel> GetPurchasableCustoms()
+        {
+            var modelList = new List<ColorModel>();
+            foreach (var dataModel in _customData.CustomDataModels)
+            {
+                if (!dataModel.IsPurchased)
                 {
                     modelList.Add(dataModel.ColorModel);
                 }

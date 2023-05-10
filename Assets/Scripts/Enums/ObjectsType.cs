@@ -1,6 +1,6 @@
 namespace Enums
 {
-    public enum CustomType
+    public enum ObjectsType
     {
         Hair,
         Eyes,

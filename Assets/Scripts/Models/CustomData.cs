@@ -5,6 +5,6 @@ namespace Models
 {
     public class CustomData : MonoBehaviour
     {
-        public List<CustomDataModel> CustomDataModels = new List<CustomDataModel>();
+        public List<CustomDataModel> CustomDataModels;
     }
 }

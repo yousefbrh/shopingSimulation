@@ -32,24 +32,24 @@ namespace Components
         {
             foreach (var colorModel in colorModels)
             {
-                switch (colorModel.CustomType)
+                switch (colorModel.objectsType)
                 {
-                    case CustomType.Hair:
+                    case ObjectsType.Hair:
                         ChangeHairColor(colorModel.Color);
                         break;
-                    case CustomType.Eyes:
+                    case ObjectsType.Eyes:
                         ChangeEyesColor(colorModel.Color);
                         break;
-                    case CustomType.Skin:
+                    case ObjectsType.Skin:
                         ChangeSkinsColor(colorModel.Color);
                         break;
-                    case CustomType.Cloth:
+                    case ObjectsType.Cloth:
                         ChangeClothsColor(colorModel.Color);
                         break;
-                    case CustomType.Trousers:
+                    case ObjectsType.Trousers:
                         ChangeTrousersColor(colorModel.Color);
                         break;
-                    case CustomType.Shoes:
+                    case ObjectsType.Shoes:
                         ChangeShoesColor(colorModel.Color);
                         break;
                     default:

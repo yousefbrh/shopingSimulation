@@ -28,6 +28,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3817901515712333091, guid: b3c2f637d2a615246a5b46d92582f1cd, type: 3}
+      propertyPath: objectsType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3817901515712333091, guid: b3c2f637d2a615246a5b46d92582f1cd, type: 3}
       propertyPath: iconImages.Array.size
       value: 1
       objectReference: {fileID: 0}

@@ -46,62 +46,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CustomDataModels:
   - ColorModel:
-      CustomType: 0
+      objectsType: 0
       Color: {r: 1, g: 0, b: 0, a: 1}
     IsEquipped: 0
     IsPurchased: 0
   - ColorModel:
-      CustomType: 1
+      objectsType: 1
       Color: {r: 0, g: 0.40378952, b: 1, a: 1}
     IsEquipped: 0
     IsPurchased: 1
   - ColorModel:
-      CustomType: 0
+      objectsType: 0
       Color: {r: 0.027350426, g: 1, b: 0, a: 1}
     IsEquipped: 0
     IsPurchased: 1
   - ColorModel:
-      CustomType: 0
+      objectsType: 0
       Color: {r: 0, g: 1, b: 0.8431506, a: 1}
     IsEquipped: 0
     IsPurchased: 1
   - ColorModel:
-      CustomType: 0
+      objectsType: 0
       Color: {r: 1, g: 0, b: 0.5719805, a: 1}
     IsEquipped: 0
     IsPurchased: 1
   - ColorModel:
-      CustomType: 1
+      objectsType: 1
       Color: {r: 1, g: 0, b: 0.5719805, a: 1}
     IsEquipped: 0
     IsPurchased: 1
   - ColorModel:
-      CustomType: 0
+      objectsType: 0
       Color: {r: 0.44705883, g: 0.29411766, b: 0.105882354, a: 1}
     IsEquipped: 1
     IsPurchased: 1
   - ColorModel:
-      CustomType: 2
+      objectsType: 2
       Color: {r: 0.8862745, g: 0.7176471, b: 0.5372549, a: 1}
     IsEquipped: 1
     IsPurchased: 1
   - ColorModel:
-      CustomType: 1
+      objectsType: 1
       Color: {r: 0.4862745, g: 0.5568628, b: 0.6313726, a: 1}
     IsEquipped: 1
     IsPurchased: 1
   - ColorModel:
-      CustomType: 5
+      objectsType: 5
       Color: {r: 0.3137255, g: 0.18431373, b: 0.21176471, a: 1}
     IsEquipped: 1
     IsPurchased: 1
   - ColorModel:
-      CustomType: 3
+      objectsType: 3
       Color: {r: 0.33333334, g: 0.10980392, b: 0.10980392, a: 1}
     IsEquipped: 1
     IsPurchased: 1
   - ColorModel:
-      CustomType: 4
+      objectsType: 4
       Color: {r: 0.10980392, g: 0.21568628, b: 0.33333334, a: 1}
     IsEquipped: 1
     IsPurchased: 1
