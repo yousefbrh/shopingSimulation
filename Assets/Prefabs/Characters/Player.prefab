@@ -1347,6 +1347,8 @@ GameObject:
   - component: {fileID: 4610258806408331062}
   - component: {fileID: 8393877708934779741}
   - component: {fileID: 1461398777811540245}
+  - component: {fileID: 1900223139170311698}
+  - component: {fileID: 4507901355129365777}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1452,6 +1454,67 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.55, y: 1.07}
   m_EdgeRadius: 0
+--- !u!114 &1900223139170311698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4610258806408331065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e84516267884536abbbbec73de16a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hairsSprite:
+  - {fileID: 2920696980930255124}
+  - {fileID: 8655977893069548773}
+  - {fileID: 3897130687712831714}
+  - {fileID: 8337595864219642383}
+  eyesSprite:
+  - {fileID: 8257878922149013301}
+  - {fileID: 8966839272990111717}
+  skinsSprite:
+  - {fileID: 765928839535406316}
+  - {fileID: 2504083677728875949}
+  - {fileID: 1296991547772318333}
+  - {fileID: 1430256955619119999}
+  - {fileID: 9159198352990234077}
+  - {fileID: 8089679571457416787}
+  - {fileID: 1634899765640021803}
+  - {fileID: 3639472729951141191}
+  - {fileID: 4462387565693970783}
+  clothsSprite:
+  - {fileID: 2417406989493210465}
+  - {fileID: 487515848416524538}
+  - {fileID: 6338122884335043056}
+  - {fileID: 8713300153784129749}
+  trousersSprite:
+  - {fileID: 3941921633002333388}
+  - {fileID: 598096716299402497}
+  - {fileID: 4850660829832426436}
+  - {fileID: 6815422200252222040}
+  shoesSprite:
+  - {fileID: 2261720603103795422}
+  - {fileID: 7733374853477979254}
+  - {fileID: 5935898610106327410}
+  - {fileID: 6448168988971161037}
+  - {fileID: 8462994615487853026}
+  - {fileID: 7053985400098575364}
+--- !u!114 &4507901355129365777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4610258806408331065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77bbda51e46c46ddabfcc9f63cd8ec7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customHandler: {fileID: 1900223139170311698}
+  movement: {fileID: 4610258806408331063}
 --- !u!1 &4647355053756988765
 GameObject:
   m_ObjectHideFlags: 0

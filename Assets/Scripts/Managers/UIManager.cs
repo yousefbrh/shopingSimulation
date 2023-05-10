@@ -5,15 +5,17 @@ using Models;
 using UI;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Managers
 {
     public class UIManager : MonoBehaviour
     {
         [SerializeField] private DialogData data;
-        [SerializeField] private TypingDialogPanel typingDialogPanel;
+        [SerializeField] private TypingPanelPanel typingPanelPanel;
+        [SerializeField] private InventoryPanel inventoryPanel;
 
-        private List<Dialog> _openPanels = new List<Dialog>();
+        private List<Panel> _openPanels = new List<Panel>();
 
         public static UIManager Instance;
 
@@ -45,20 +47,27 @@ namespace Managers
                 return;
             }
 
-            var cloneDialog = Instantiate(typingDialogPanel, transform);
+            var cloneDialog = Instantiate(typingPanelPanel, transform);
             cloneDialog.onDialogClosed += RemoveDialogFromOpenList;
-            cloneDialog.Initialize(targetDialog.DialogText);
+            cloneDialog.SetDialog(targetDialog.DialogText);
+            cloneDialog.Initialize();
             _openPanels.Add(cloneDialog);
         }
 
         private void OpenInventory()
         {
-            
+            if (_openPanels.Count > 0) return;
+            var clonePanel = Instantiate(inventoryPanel, transform);
+            clonePanel.onDialogClosed += RemoveDialogFromOpenList;
+            clonePanel.Initialize();
+            _openPanels.Add(clonePanel);
         }
 
-        private void RemoveDialogFromOpenList(Dialog dialog)
+        private void RemoveDialogFromOpenList(Panel panel)
         {
-            _openPanels.Remove(dialog);
+            _openPanels.Remove(panel);
+            panel.onDialogClosed = null;
+            Destroy(panel.gameObject);
         }
     }
 }

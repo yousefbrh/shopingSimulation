@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b120668681cca274fb714b18d247b0c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToOpenOrClosePanel: 0.5
   text: {fileID: 5848460730418975219}
   typeWriterUI: {fileID: 5848460730418975216}
-  timeToOpenOrCloseDialog: 0.5
   timeToCloseDialogAfterTextFullyAppeared: 1
