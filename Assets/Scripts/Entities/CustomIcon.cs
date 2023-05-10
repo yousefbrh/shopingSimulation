@@ -16,7 +16,6 @@ namespace Entities
         [SerializeField] private List<Image> playerImages;
         [SerializeField] private Button actionButton;
         [SerializeField] private bool isEquipmentIcon;
-        [SerializeField] private bool isChoosingCustomIcon;
         [SerializeField] private bool isSectionIcon;
 
         public Action<ColorModel, CustomIcon> onCustomChoose;
@@ -26,13 +25,11 @@ namespace Entities
         {
             if (isEquipmentIcon)
                 actionButton.interactable = false;
-            if (isChoosingCustomIcon)
-                ApplyCustomChoosingAction();
             if (isSectionIcon)
                 ApplySectionChoosingAction();
         }
 
-        private void ApplyCustomChoosingAction()
+        public void ApplyCustomChoosingAction()
         {
             actionButton.onClick.AddListener(ActionButtonForCustomChoosingClicked);
         }
@@ -64,7 +61,9 @@ namespace Entities
             {
                 iconImage.color = colorModel.Color;
             }
-
+            
+            if (playerImages.Count == 0) return;
+            
             foreach (var playerImage in playerImages)
             {
                 playerImage.color = colorModel.Color;

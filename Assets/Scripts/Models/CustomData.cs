@@ -1,9 +1,10 @@
+using System.Collections.Generic;
+using UnityEngine;
+
 namespace Models
 {
-    public class CustomData
+    public class CustomData : MonoBehaviour
     {
-        public ColorModel ColorModel;
-        public bool IsEquipped;
-        public bool IsPurchased;
+        public List<CustomDataModel> CustomDataModels;
     }
 }
