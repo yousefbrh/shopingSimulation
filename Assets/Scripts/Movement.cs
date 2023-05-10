@@ -20,10 +20,30 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _inputMovement.x = Input.GetAxis("Horizontal");
-        _inputMovement.y = Input.GetAxis("Vertical");
-        animator.SetFloat(X, _inputMovement.x);
-        animator.SetFloat(Y, _inputMovement.y);
+        switch (_inputMovement.x)
+        {
+            case > 0:
+                animator.SetFloat(X, 1);
+                break;
+            case < 0:
+                animator.SetFloat(X, -1);
+                break;
+            default:
+                animator.SetFloat(X, 0);
+                break;
+        }
+        switch (_inputMovement.y)
+        {
+            case > 0:
+                animator.SetFloat(Y, 1);
+                break;
+            case < 0:
+                animator.SetFloat(Y, -1);
+                break;
+            default:
+                animator.SetFloat(Y, 0);
+                break;
+        }
 
         rb.MovePosition(rb.position + speed * _inputMovement * Time.fixedDeltaTime);
     }
