@@ -65,6 +65,7 @@ namespace UI
             _purchasedList.Add(removeEquippedItem);
             _equippedList.Add(model);
             SetCustomIcons();
+            ApplyCustomsOnPlayer();
             SaveData();
         }
 
@@ -72,6 +73,11 @@ namespace UI
         {
             InventoryManager.Instance.SetEquippedCustoms(_equippedList);
             InventoryManager.Instance.SetPurchasedCustoms(_purchasedList);
+        }
+        
+        private void ApplyCustomsOnPlayer()
+        {
+            _player.CustomHandler.ChangeCustom(_equippedList);
         }
 
         private void SetCustomIcons()
