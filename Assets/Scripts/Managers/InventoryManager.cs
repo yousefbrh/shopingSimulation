@@ -29,7 +29,15 @@ namespace Managers
             customData.CustomDataModels.Clear();
             foreach (var data in defaultCustomData.CustomDataModels)
             {
-                customData.CustomDataModels.Add(data);
+                var model = new CustomDataModel()
+                {
+                    Color = data.Color,
+                    ObjectsType = data.ObjectsType,
+                    Price = data.Price,
+                    IsPurchased = data.IsPurchased,
+                    IsEquipped = data.IsPurchased
+                };
+                customData.CustomDataModels.Add(model);
             }
         }
 
