@@ -20,8 +20,8 @@ namespace UI
         [SerializeField] private Button exitButton;
 
         private Player _player;
-        private List<ColorModel> _equippedList;
-        private List<ColorModel> _purchasedList;
+        private List<CustomDataModel> _equippedList;
+        private List<CustomDataModel> _purchasedList;
         private ObjectsType _currentSection;
 
         private void Start()
@@ -60,33 +60,35 @@ namespace UI
             FillInventorySpots();
         }
 
-        private void CustomChoose(ColorModel colorModel, GridSpot gridSpot)
+        private void CustomChoose(CustomDataModel customDataModel, GridSpot gridSpot)
         {
-            var targetCustom = equippedCustomIcons.Find(icon => icon.ObjectsType == colorModel.objectsType);
-            gridSpot.ShowIcon(targetCustom.GetColorModel());
+            var targetCustom = equippedCustomIcons.Find(icon => icon.ObjectsType == customDataModel.ObjectsType);
+            gridSpot.ShowIcon(targetCustom.GetCustomDataModel());
             
             var equippedRemoveTarget = _equippedList.Find(model => 
-                model.objectsType == targetCustom.GetColorModel().objectsType && model.Color == targetCustom.GetColorModel().Color);
+                model.ObjectsType == 
+                targetCustom.GetCustomDataModel().ObjectsType && model.Color == targetCustom.GetCustomDataModel().Color);
             _equippedList.Remove(equippedRemoveTarget);
-            _equippedList.Add(colorModel);
+            _equippedList.Add(customDataModel);
             
-            var purchasedRemoveTarget = _purchasedList.Find(model => model.Color == colorModel.Color && model.objectsType == colorModel.objectsType);
+            var purchasedRemoveTarget = _purchasedList.Find(model => 
+                model.Color == customDataModel.Color && model.ObjectsType == customDataModel.ObjectsType);
             _purchasedList.Remove(purchasedRemoveTarget);
-            _purchasedList.Add(targetCustom.GetColorModel());
+            _purchasedList.Add(targetCustom.GetCustomDataModel());
             
-            targetCustom.SetModel(colorModel);
+            targetCustom.SetModel(customDataModel);
 
-            var targetBodyParts = bodyParts.FindAll(part => part.ObjectsType == colorModel.objectsType);
+            var targetBodyParts = bodyParts.FindAll(part => part.ObjectsType == customDataModel.ObjectsType);
             foreach (var bodyPart in targetBodyParts)
             {
-                bodyPart.SetColor(colorModel.Color);
+                bodyPart.SetColor(customDataModel.Color);
             }
         }
 
         private void FillInventorySpots()
         {
             ClearInventorySpots();
-            var filterItems = _purchasedList.FindAll(model => model.objectsType == _currentSection);
+            var filterItems = _purchasedList.FindAll(model => model.ObjectsType == _currentSection);
             if (filterItems.Count == 0) return;
             for (int i = 0; i < filterItems.Count; i++)
             {
@@ -106,9 +108,9 @@ namespace UI
         {
             foreach (var icon in equippedCustomIcons)
             {
-                var targetModel = _equippedList.Find(model => model.objectsType == icon.ObjectsType);
+                var targetModel = _equippedList.Find(model => model.ObjectsType == icon.ObjectsType);
                 icon.SetModel(targetModel);
-                var targetBodyParts = bodyParts.FindAll(part => part.ObjectsType == targetModel.objectsType);
+                var targetBodyParts = bodyParts.FindAll(part => part.ObjectsType == targetModel.ObjectsType);
                 foreach (var bodyPart in targetBodyParts)
                 {
                     bodyPart.SetColor(targetModel.Color);
@@ -118,7 +120,7 @@ namespace UI
         
         private void ApplyCustomsOnPlayer()
         {
-            var modelList = equippedCustomIcons.Select(equippedCustomIcon => equippedCustomIcon.GetColorModel()).ToList();
+            var modelList = equippedCustomIcons.Select(equippedCustomIcon => equippedCustomIcon.GetCustomDataModel()).ToList();
             _player.CustomHandler.ChangeCustom(modelList);
         }
 

@@ -28,11 +28,11 @@ namespace Components
             ChangeCustom(equippedCustoms);
         }
 
-        public void ChangeCustom(List<ColorModel> colorModels)
+        public void ChangeCustom(List<CustomDataModel> colorModels)
         {
             foreach (var colorModel in colorModels)
             {
-                switch (colorModel.objectsType)
+                switch (colorModel.ObjectsType)
                 {
                     case ObjectsType.Hair:
                         ChangeHairColor(colorModel.Color);

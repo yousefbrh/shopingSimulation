@@ -14,29 +14,22 @@ namespace Entities
         [SerializeField] private ObjectsType objectsType;
         [SerializeField] private List<Image> iconImages;
 
-        private ColorModel _colorModel;
+        private CustomDataModel _customDataModel;
         public ObjectsType ObjectsType => objectsType;
 
-        public void SetModel(ColorModel colorModel)
+        public void SetModel(CustomDataModel customDataModel)
         {
-            _colorModel = colorModel;
+            _customDataModel = customDataModel;
             
             foreach (var iconImage in iconImages)
             {
-                iconImage.color = _colorModel.Color;
+                iconImage.color = _customDataModel.Color;
             }
-            
-            // if (playerImages.Count == 0) return;
-            //
-            // foreach (var playerImage in playerImages)
-            // {
-            //     playerImage.color = colorModel.Color;
-            // }
         }
 
-        public ColorModel GetColorModel()
+        public CustomDataModel GetCustomDataModel()
         {
-            return _colorModel;
+            return _customDataModel;
         }
     }
 }

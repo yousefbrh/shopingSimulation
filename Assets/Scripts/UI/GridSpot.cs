@@ -12,11 +12,11 @@ namespace UI
         [SerializeField] private List<ObjectIcon> customIcons;
         [SerializeField] private Button actionButton;
         private ObjectIcon _currentIcon;
-        private ColorModel _colorModel;
+        private CustomDataModel _customDataModel;
 
         public ObjectIcon CurrentIcon => _currentIcon;
 
-        public Action<ColorModel, GridSpot> onButtonClicked;
+        public Action<CustomDataModel, GridSpot> onButtonClicked;
 
         private void Start()
         {
@@ -25,16 +25,16 @@ namespace UI
 
         private void ButtonClicked()
         {
-            onButtonClicked?.Invoke(_colorModel, this);
+            onButtonClicked?.Invoke(_customDataModel, this);
         }
 
-        public void ShowIcon(ColorModel colorModel)
+        public void ShowIcon(CustomDataModel customDataModel)
         {
             HideIcon();
-            _colorModel = colorModel;
-            var targetIcon = customIcons.Find(icon => icon.ObjectsType == _colorModel.objectsType);
+            _customDataModel = customDataModel;
+            var targetIcon = customIcons.Find(icon => icon.ObjectsType == _customDataModel.ObjectsType);
             _currentIcon = Instantiate(targetIcon, transform);
-            _currentIcon.SetModel(_colorModel);
+            _currentIcon.SetModel(_customDataModel);
         }
 
         public void HideIcon()

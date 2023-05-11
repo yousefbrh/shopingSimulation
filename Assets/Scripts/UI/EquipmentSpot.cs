@@ -22,11 +22,11 @@ namespace UI
                 SetCurrentButton();
         }
 
-        public void SetModel(ColorModel colorModel)
+        public void SetModel(CustomDataModel customDataModel)
         {
             if (_currentIcon == null)
                 SetCurrentButton();
-            _currentIcon.SetModel(colorModel);
+            _currentIcon.SetModel(customDataModel);
         }
 
         private void SetCurrentButton()
@@ -35,9 +35,9 @@ namespace UI
             _currentIcon = Instantiate(targetIcon, iconSpot);
         }
 
-        public ColorModel GetColorModel()
+        public CustomDataModel GetCustomDataModel()
         {
-            return _currentIcon.GetColorModel();
+            return _currentIcon.GetCustomDataModel();
         }
     }
 }

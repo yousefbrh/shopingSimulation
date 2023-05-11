@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using DefaultNamespace;
 using Models;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Managers
 {
     public class InventoryManager : MonoBehaviour
     {
+        [SerializeField] private CustomData defaultCustomData;
         [SerializeField] private CustomData customData;
-
-        private CustomData _customData;
-
+        
         public static InventoryManager Instance;
 
         private void Awake()
@@ -26,7 +26,10 @@ namespace Managers
                 DontDestroyOnLoad(this);
             }
 
-            _customData = customData;
+            foreach (var data in defaultCustomData.CustomDataModels)
+            {
+                customData.CustomDataModels.Add(data);
+            }
         }
 
         private void Start()
@@ -38,75 +41,79 @@ namespace Managers
         {
             var savedData = Prefs.GetCustomData();
             if (savedData == null) return;
-            _customData.CustomDataModels.Clear();
+            customData.CustomDataModels.Clear();
             foreach (var model in savedData.CustomDataModels)
             {
                 var data = new CustomDataModel()
                 {
-                    ColorModel = model.ColorModel,
+                    Color = model.Color,
+                    ObjectsType = model.ObjectsType,
                     IsEquipped = model.IsEquipped,
-                    IsPurchased = model.IsPurchased
+                    IsPurchased = model.IsPurchased,
+                    Price = model.Price
                 };
-                _customData.CustomDataModels.Add(data);
+                customData.CustomDataModels.Add(data);
             }
         }
 
-        public void SetPurchasedCustoms(List<ColorModel> models)
+        public void SetPurchasedCustoms(List<CustomDataModel> models)
         {
             foreach (var model in models)
             {
-                var data = _customData.CustomDataModels.Find(dataModel => dataModel.ColorModel.Color == model.Color && dataModel.ColorModel.objectsType == model.objectsType);
+                var data = customData.CustomDataModels.Find(dataModel => 
+                    dataModel.Color == model.Color && dataModel.ObjectsType == model.ObjectsType);
                 data.IsEquipped = false;
             }
-            Prefs.SaveCustomData(_customData);
+            Prefs.SaveCustomData(customData);
         }
         
-        public void SetEquippedCustoms(List<ColorModel> models)
+        public void SetEquippedCustoms(List<CustomDataModel> models)
         {
             foreach (var model in models)
             {
-                var data = _customData.CustomDataModels.Find(dataModel => dataModel.ColorModel.Color == model.Color && dataModel.ColorModel.objectsType == model.objectsType);
-                data.IsEquipped = true;
+                var data = customData.CustomDataModels.Find(dataModel => 
+                    dataModel.Color == model.Color && dataModel.ObjectsType == model.ObjectsType);
+                    data.IsEquipped = true;
             }
-            Prefs.SaveCustomData(_customData);
+            Prefs.SaveCustomData(customData);
         }
 
-        public List<ColorModel> GetPurchasedCustoms()
+        public List<CustomDataModel> GetPurchasedCustoms()
         {
-            var modelList = new List<ColorModel>();
-            foreach (var dataModel in _customData.CustomDataModels)
+            var modelList = new List<CustomDataModel>();
+            foreach (var dataModel in customData.CustomDataModels)
             {
                 if (dataModel.IsPurchased && !dataModel.IsEquipped)
                 {
-                    modelList.Add(dataModel.ColorModel);
+                    modelList.Add(dataModel);
                 }
             }
 
             return modelList;
         }
 
-        public List<ColorModel> GetEquippedCustoms()
+        public List<CustomDataModel> GetEquippedCustoms()
         {
-            var modelList = new List<ColorModel>();
-            foreach (var dataModel in _customData.CustomDataModels)
+            var modelList = new List<CustomDataModel>();
+            foreach (var dataModel in customData.CustomDataModels)
             {
                 if (dataModel.IsPurchased && dataModel.IsEquipped)
                 {
-                    modelList.Add(dataModel.ColorModel);
+                    modelList.Add(dataModel);
                 }
             }
 
             return modelList;
         }
         
-        public List<ColorModel> GetPurchasableCustoms()
+        public List<CustomDataModel> GetPurchasableCustoms()
         {
-            var modelList = new List<ColorModel>();
-            foreach (var dataModel in _customData.CustomDataModels)
+            var modelList = new List<CustomDataModel>();
+            foreach (var dataModel in customData.CustomDataModels)
             {
                 if (!dataModel.IsPurchased)
                 {
-                    modelList.Add(dataModel.ColorModel);
+                    modelList.Add(dataModel);
                 }
             }
 

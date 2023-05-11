@@ -11,13 +11,15 @@ namespace UI
 {
     public class ShopPanel : Panel
     {
-        [SerializeField] private List<ObjectIcon> sectionCustomIcons;
-        [SerializeField] private List<GridSpot> inventorySpots;
+        [SerializeField] private List<SectionIconButton> sectionCustomIcons;
+        [SerializeField] private List<GridSpot> gridSpots;
+        [SerializeField] private List<BodyPart> bodyParts;
         [SerializeField] private BuySection buySection;
         [SerializeField] private Button exitButton;
 
-        private List<ColorModel> _purchasableColorModel;
-        private List<ObjectIcon> _choosingCustomIcons;
+        private List<CustomDataModel> _purchasableColorModel;
+        private List<CustomDataModel> _equippedList;
+        // private List<ObjectIcon> _choosingCustomIcons;
         private Player _player;
         private ObjectsType _currentSection;
 
@@ -25,7 +27,7 @@ namespace UI
         {
             FillVariables();
             SubscribeActions();
-            // SetCustomIcons();
+            SetCustomIcons();
             FillGridSpots();
         }
         
@@ -33,6 +35,7 @@ namespace UI
         {
             _player = GameManager.Instance.Player;
             _purchasableColorModel = InventoryManager.Instance.GetPurchasableCustoms();
+            _equippedList = InventoryManager.Instance.GetEquippedCustoms();
             _currentSection = sectionCustomIcons.First().ObjectsType;
         }
         
@@ -42,7 +45,23 @@ namespace UI
 
             foreach (var sectionCustomIcon in sectionCustomIcons)
             {
-                // sectionCustomIcon.onSectionChoosed += ChangeCurrentSection;
+                sectionCustomIcon.onSectionClicked += ChangeCurrentSection;
+            }
+            foreach (var gridSpot in gridSpots)
+            {
+                gridSpot.onButtonClicked += CustomChoose;
+            }
+        }
+
+        private void SetCustomIcons()
+        {
+            foreach (var equipped in _equippedList)
+            {
+                var targetBodyParts = bodyParts.FindAll(part => part.ObjectsType == equipped.ObjectsType);
+                foreach (var bodyPart in targetBodyParts)
+                {
+                    bodyPart.SetColor(equipped.Color);
+                }
             }
         }
         
@@ -55,30 +74,24 @@ namespace UI
         private void FillGridSpots()
         {
             ClearGridSpots();
-            _choosingCustomIcons.Clear();
-            var filterItems = _purchasableColorModel.FindAll(model => model.objectsType == _currentSection);
+            var filterItems = _purchasableColorModel.FindAll(model => model.ObjectsType == _currentSection);
             if (filterItems.Count == 0) return;
             for (int i = 0; i < filterItems.Count; i++)
             {
-                inventorySpots[i].ShowIcon(filterItems[i]);
-                _choosingCustomIcons.Add(inventorySpots[i].CurrentIcon);
-            }
-            foreach (var choosingCustomIcon in _choosingCustomIcons)
-            {
-                // choosingCustomIcon.onCustomChoose += CustomChoose;
+                gridSpots[i].ShowIcon(filterItems[i]);
             }
         }
 
-        private void CustomChoose(ColorModel arg1, ObjectIcon arg2)
+        private void CustomChoose(CustomDataModel customDataModel, GridSpot gridSpot)
         {
-            throw new System.NotImplementedException();
+            buySection.Initialize();
         }
 
         private void ClearGridSpots()
         {
-            foreach (var inventorySpot in inventorySpots)
+            foreach (var gridSpot in gridSpots)
             {
-                inventorySpot.HideIcon();
+                gridSpot.HideIcon();
             }
         }
     }
