@@ -65,6 +65,7 @@ namespace UI
             _equippedList.Add(model);
             SetCustomIcons();
             ApplyCustomsOnPlayer();
+            FillGridSpots();
             SaveData();
         }
 
