@@ -17,11 +17,6 @@ namespace DefaultNamespace
         }
         public static void SaveCustomData(CustomData customData)
         {
-            var savingData = new SavingCustomData();
-            foreach (var data in customData.CustomDataModels)
-            {
-                savingData.CustomDataModels.Add(data);
-            }
             var json = JsonUtility.ToJson(customData);
             CustomData = json;
         }
