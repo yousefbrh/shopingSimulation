@@ -43,3 +43,13 @@ MonoBehaviour:
     Price: 0
     IsEquipped: 1
     IsPurchased: 1
+  - ObjectsType: 0
+    Color: {r: 1, g: 0, b: 0.21212101, a: 1}
+    Price: 0
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 0
+    Color: {r: 0.040961742, g: 1, b: 0, a: 1}
+    Price: 0
+    IsEquipped: 0
+    IsPurchased: 0

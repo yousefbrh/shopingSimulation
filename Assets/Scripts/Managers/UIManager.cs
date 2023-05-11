@@ -14,6 +14,7 @@ namespace Managers
         [SerializeField] private DialogData data;
         [SerializeField] private TypingPanelPanel typingPanelPanel;
         [SerializeField] private InventoryPanel inventoryPanel;
+        [SerializeField] private ShopPanel shopPanel;
 
         private List<Panel> _openPanels = new List<Panel>();
 
@@ -58,6 +59,15 @@ namespace Managers
         {
             if (_openPanels.Count > 0) return;
             var clonePanel = Instantiate(inventoryPanel, transform);
+            clonePanel.onDialogClosed += RemoveDialogFromOpenList;
+            clonePanel.Initialize();
+            _openPanels.Add(clonePanel);
+        }
+
+        public void OpenShop()
+        {
+            if (_openPanels.Count > 0) return;
+            var clonePanel = Instantiate(shopPanel, transform);
             clonePanel.onDialogClosed += RemoveDialogFromOpenList;
             clonePanel.Initialize();
             _openPanels.Add(clonePanel);

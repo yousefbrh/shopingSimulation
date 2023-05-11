@@ -17,8 +17,9 @@ namespace UI
         [SerializeField] private BuySection buySection;
         [SerializeField] private Button exitButton;
 
-        private List<CustomDataModel> _purchasableColorModel;
+        private List<CustomDataModel> _purchasableList;
         private List<CustomDataModel> _equippedList;
+        private List<CustomDataModel> _purchasedList;
         // private List<ObjectIcon> _choosingCustomIcons;
         private Player _player;
         private ObjectsType _currentSection;
@@ -34,8 +35,9 @@ namespace UI
         private void FillVariables()
         {
             _player = GameManager.Instance.Player;
-            _purchasableColorModel = InventoryManager.Instance.GetPurchasableCustoms();
+            _purchasableList = InventoryManager.Instance.GetPurchasableCustoms();
             _equippedList = InventoryManager.Instance.GetEquippedCustoms();
+            _purchasedList = InventoryManager.Instance.GetPurchasedCustoms();
             _currentSection = sectionCustomIcons.First().ObjectsType;
         }
         
@@ -51,6 +53,25 @@ namespace UI
             {
                 gridSpot.onButtonClicked += CustomChoose;
             }
+
+            buySection.onPurchased += CustomPurchased;
+        }
+
+        private void CustomPurchased(CustomDataModel model)
+        {
+            var removeEquippedItem = _equippedList.Find(item => item.ObjectsType == model.ObjectsType);
+            _equippedList.Remove(removeEquippedItem);
+            _purchasableList.Remove(model);
+            _purchasedList.Add(removeEquippedItem);
+            _equippedList.Add(model);
+            SetCustomIcons();
+            SaveData();
+        }
+
+        private void SaveData()
+        {
+            InventoryManager.Instance.SetEquippedCustoms(_equippedList);
+            InventoryManager.Instance.SetPurchasedCustoms(_purchasedList);
         }
 
         private void SetCustomIcons()
@@ -74,7 +95,8 @@ namespace UI
         private void FillGridSpots()
         {
             ClearGridSpots();
-            var filterItems = _purchasableColorModel.FindAll(model => model.ObjectsType == _currentSection);
+            var filterItems = _purchasableList.FindAll(model => model.ObjectsType == _currentSection);
+            filterItems.Sort((a,b) => a.Price.CompareTo(b.Price));
             if (filterItems.Count == 0) return;
             for (int i = 0; i < filterItems.Count; i++)
             {
@@ -84,7 +106,8 @@ namespace UI
 
         private void CustomChoose(CustomDataModel customDataModel, GridSpot gridSpot)
         {
-            buySection.Initialize();
+            buySection.gameObject.SetActive(true);
+            buySection.Initialize(customDataModel);
         }
 
         private void ClearGridSpots()

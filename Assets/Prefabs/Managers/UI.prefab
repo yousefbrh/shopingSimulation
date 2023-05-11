@@ -116,3 +116,4 @@ MonoBehaviour:
   data: {fileID: 1301471094127959865, guid: cc598fc466743c54eb62f4c0d411015c, type: 3}
   typingPanelPanel: {fileID: 5063758170620260218, guid: de8e26feb03db86418c9dacada49afb5, type: 3}
   inventoryPanel: {fileID: 2893583315134034322, guid: 537947b267f090843ba1e16ab8d80136, type: 3}
+  shopPanel: {fileID: 1557206967433374703, guid: 1ba0eff84ced673459f0ee22a25820fb, type: 3}

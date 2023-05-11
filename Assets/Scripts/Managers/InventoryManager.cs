@@ -26,6 +26,7 @@ namespace Managers
                 DontDestroyOnLoad(this);
             }
 
+            customData.CustomDataModels.Clear();
             foreach (var data in defaultCustomData.CustomDataModels)
             {
                 customData.CustomDataModels.Add(data);
@@ -63,6 +64,7 @@ namespace Managers
                 var data = customData.CustomDataModels.Find(dataModel => 
                     dataModel.Color == model.Color && dataModel.ObjectsType == model.ObjectsType);
                 data.IsEquipped = false;
+                data.IsPurchased = true;
             }
             Prefs.SaveCustomData(customData);
         }
@@ -74,6 +76,7 @@ namespace Managers
                 var data = customData.CustomDataModels.Find(dataModel => 
                     dataModel.Color == model.Color && dataModel.ObjectsType == model.ObjectsType);
                     data.IsEquipped = true;
+                    data.IsPurchased = true;
             }
             Prefs.SaveCustomData(customData);
         }

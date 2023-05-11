@@ -396,6 +396,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e30b1ee388438190285febc0f98d02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectIcons:
+  - {fileID: 2832924994705917313, guid: ad7dc9539af4fc140945995224b54c09, type: 3}
+  - {fileID: 6398167072009235202, guid: f96f3dcbdbf82db4eae253c9d1c569ff, type: 3}
+  - {fileID: 3827994568597211656, guid: 4711de517043d5d449adc71375149daa, type: 3}
+  - {fileID: 9199206118669508898, guid: 0a14b67cffc2d344aa7de9e683f0278c, type: 3}
+  - {fileID: 7054873129676212646, guid: e9420f55b2c91604bb6af85363b2e5b4, type: 3}
+  - {fileID: 2832924994705917313, guid: 28591baf03b2da34899988487d0586db, type: 3}
   iconPlacement: {fileID: 7157462443795964422}
   textPrice: {fileID: 7157462443180991438}
   buyButton: {fileID: 7157462444852808394}
