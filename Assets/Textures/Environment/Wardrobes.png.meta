@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 029949df68540124e90fc709eedfb889
+guid: 5934240172f56c44bb796f5054bcc038
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -164,13 +164,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wardrobes and Bookshelfs_0
+      name: Wardrobes_0
       rect:
         serializedVersion: 2
-        x: 228
-        y: 382
-        width: 41
-        height: 50
+        x: 62
+        y: 314
+        width: 241
+        height: 186
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,20 +178,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74edc26d7c038e249b60074cd9170eb7
-      internalID: -40215668
+      spriteID: c21069d4d50193d41932f5816f2ac57f
+      internalID: -983178182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wardrobes and Bookshelfs_1
+      name: Wardrobes_1
       rect:
         serializedVersion: 2
-        x: 78
-        y: 267
-        width: 82
-        height: 77
+        x: 363
+        y: 311
+        width: 79
+        height: 190
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,20 +199,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc38a572731ad2a428132316683a806b
-      internalID: 1553450708
+      spriteID: 145af3954b4b59f40910dc7467f096d6
+      internalID: -1061554105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wardrobes and Bookshelfs_2
+      name: Wardrobes_2
       rect:
         serializedVersion: 2
-        x: 192
-        y: 267
-        width: 130
-        height: 77
+        x: 121
+        y: 10
+        width: 133
+        height: 230
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,20 +220,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e84880553db9cf442b30c2f07aeb51fe
-      internalID: 1409982032
+      spriteID: 75100aeb5ea9eab4b99d1d1efef9bae7
+      internalID: 2080793382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wardrobes and Bookshelfs_3
+      name: Wardrobes_3
       rect:
         serializedVersion: 2
-        x: 344
-        y: 269
-        width: 72
-        height: 69
+        x: 365
+        y: 10
+        width: 80
+        height: 229
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,71 +241,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95da562ee10060f40b9e9ccd8009798c
-      internalID: 664777003
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wardrobes and Bookshelfs_4
-      rect:
-        serializedVersion: 2
-        x: 13
-        y: 98
-        width: 143
-        height: 118
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d821bba3b2f7c944daa3af7d615ff8d0
-      internalID: 241003101
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wardrobes and Bookshelfs_5
-      rect:
-        serializedVersion: 2
-        x: 185
-        y: 98
-        width: 143
-        height: 118
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fc0e6636136a68b48b435be0ea33bf9c
-      internalID: 1693354532
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wardrobes and Bookshelfs_6
-      rect:
-        serializedVersion: 2
-        x: 358
-        y: 98
-        width: 144
-        height: 118
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d85e125ae3146c44a96d0754b84b4fa4
-      internalID: 216965366
+      spriteID: 61fef4921ecde084e863719114ceceb1
+      internalID: 1503877656
       vertices: []
       indices: 
       edges: []
@@ -321,13 +258,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Wardrobes and Bookshelfs_1: 1553450708
-      Wardrobes and Bookshelfs_3: 664777003
-      Wardrobes and Bookshelfs_2: 1409982032
-      Wardrobes and Bookshelfs_6: 216965366
-      Wardrobes and Bookshelfs_4: 241003101
-      Wardrobes and Bookshelfs_5: 1693354532
-      Wardrobes and Bookshelfs_0: -40215668
+      Wardrobes_3: 1503877656
+      Wardrobes_1: -1061554105
+      Wardrobes_0: -983178182
+      Wardrobes_2: 2080793382
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
