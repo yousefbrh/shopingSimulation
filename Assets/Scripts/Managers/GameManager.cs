@@ -1,4 +1,5 @@
 using System;
+using DefaultNamespace;
 using Entities;
 using UnityEngine;
 
@@ -22,6 +23,11 @@ namespace Managers
                 Instance = this;
                 DontDestroyOnLoad(this);
             }
+        }
+
+        private void Start()
+        {
+            CurrencyHandler.Initialize();
         }
     }
 }

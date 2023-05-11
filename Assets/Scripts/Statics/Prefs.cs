@@ -10,6 +10,11 @@ namespace DefaultNamespace
 {
     public static class Prefs
     {
+        public static int Money
+        {
+            get => PlayerPrefs.GetInt("Money", 0);
+            set => PlayerPrefs.SetInt("Money", value);
+        }
         private static string CustomData
         {
             get => PlayerPrefs.GetString("CustomData", "");

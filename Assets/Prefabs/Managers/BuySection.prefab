@@ -406,6 +406,8 @@ MonoBehaviour:
   iconPlacement: {fileID: 7157462443795964422}
   textPrice: {fileID: 7157462443180991438}
   buyButton: {fileID: 7157462444852808394}
+  buyButtonBackground: {fileID: 7157462444565102501}
+  notEnoughMoneyColor: {r: 0.6509804, g: 0.6509804, b: 0.6509804, a: 1}
 --- !u!1 &7157462444298212004
 GameObject:
   m_ObjectHideFlags: 0

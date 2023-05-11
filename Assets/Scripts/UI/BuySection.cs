@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DefaultNamespace;
 using Entities;
 using Models;
 using TMPro;
@@ -14,6 +15,8 @@ namespace UI
         [SerializeField] private Transform iconPlacement;
         [SerializeField] private TextMeshProUGUI textPrice;
         [SerializeField] private Button buyButton;
+        [SerializeField] private Image buyButtonBackground;
+        [SerializeField] private Color notEnoughMoneyColor;
 
         private ObjectIcon _currentIcon;
         private CustomDataModel _customDataModel;
@@ -28,11 +31,14 @@ namespace UI
             var targetIcon = objectIcons.Find(icon => icon.ObjectsType == _customDataModel.ObjectsType);
             _currentIcon = Instantiate(targetIcon, iconPlacement);
             _currentIcon.SetModel(_customDataModel);
+            buyButtonBackground.color = !CurrencyHandler.CanDecrease(_customDataModel.Price) ? notEnoughMoneyColor : Color.white;
             buyButton.onClick.AddListener(ButtonClicked);
         }
 
         private void ButtonClicked()
         {
+            if (!CurrencyHandler.CanDecrease(_customDataModel.Price)) return;
+            CurrencyHandler.DecreaseMoney(_customDataModel.Price);
             buyButton.onClick.RemoveAllListeners();
             onPurchased?.Invoke(_customDataModel);
         }
