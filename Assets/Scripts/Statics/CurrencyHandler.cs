@@ -29,6 +29,7 @@ namespace DefaultNamespace
         public static void DecreaseMoney(int value)
         {
             _currentMoney -= value;
+            SaveMoney();
             onValueChanged?.Invoke(false);
         }
 

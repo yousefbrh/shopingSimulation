@@ -88,6 +88,18 @@ namespace Managers
             }
             Prefs.SaveCustomData(customData);
         }
+        
+        public void SetPurchasableCustoms(List<CustomDataModel> models)
+        {
+            foreach (var model in models)
+            {
+                var data = customData.CustomDataModels.Find(dataModel => 
+                    dataModel.Color == model.Color && dataModel.ObjectsType == model.ObjectsType);
+                data.IsEquipped = false;
+                data.IsPurchased = false;
+            }
+            Prefs.SaveCustomData(customData);
+        }
 
         public List<CustomDataModel> GetPurchasedCustoms()
         {

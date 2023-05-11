@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Entities;
@@ -22,6 +23,7 @@ namespace UI
         private List<CustomDataModel> _purchasedList;
         private Player _player;
         private ObjectsType _currentSection;
+        private InventoryManager _inventory;
 
         private void Start()
         {
@@ -34,12 +36,18 @@ namespace UI
         private void FillVariables()
         {
             _player = GameManager.Instance.Player;
-            _purchasableList = InventoryManager.Instance.GetPurchasableCustoms();
-            _equippedList = InventoryManager.Instance.GetEquippedCustoms();
-            _purchasedList = InventoryManager.Instance.GetPurchasedCustoms();
             _currentSection = sectionCustomIcons.First().ObjectsType;
+            _inventory = InventoryManager.Instance;
+            UpdateLists();
         }
-        
+
+        private void UpdateLists()
+        {
+            _purchasableList = _inventory.GetPurchasableCustoms();
+            _equippedList = _inventory.GetEquippedCustoms();
+            _purchasedList = _inventory.GetPurchasedCustoms();
+        }
+
         private void SubscribeActions()
         {
             exitButton.onClick.AddListener(CloseDialog);
@@ -54,25 +62,54 @@ namespace UI
             }
 
             buySection.onPurchased += CustomPurchased;
+            buySection.onSell += CustomSold;
         }
 
         private void CustomPurchased(CustomDataModel model)
+        {
+            BuySectionActivationHandling(false);
+            PurchaseListTradeHandling(model);
+            SetCustomIcons();
+            ApplyCustomsOnPlayer();
+            SaveData();
+            UpdateLists();
+            FillGridSpots();
+        }
+
+        private void BuySectionActivationHandling(bool isActive)
+        {
+            buySection.gameObject.SetActive(isActive);
+        }
+
+        private void PurchaseListTradeHandling(CustomDataModel model)
         {
             var removeEquippedItem = _equippedList.Find(item => item.ObjectsType == model.ObjectsType);
             _equippedList.Remove(removeEquippedItem);
             _purchasableList.Remove(model);
             _purchasedList.Add(removeEquippedItem);
             _equippedList.Add(model);
-            SetCustomIcons();
-            ApplyCustomsOnPlayer();
-            FillGridSpots();
+        }
+
+        private void CustomSold(CustomDataModel model)
+        {
+            SellListTradeHandling(model);
             SaveData();
+            UpdateLists();
+            FillGridSpots();
+        }
+
+        private void SellListTradeHandling(CustomDataModel model)
+        {
+            buySection.gameObject.SetActive(false);
+            _purchasedList.Remove(model);
+            _purchasableList.Add(model);
         }
 
         private void SaveData()
         {
-            InventoryManager.Instance.SetEquippedCustoms(_equippedList);
-            InventoryManager.Instance.SetPurchasedCustoms(_purchasedList);
+            _inventory.SetEquippedCustoms(_equippedList);
+            _inventory.SetPurchasedCustoms(_purchasedList);
+            _inventory.SetPurchasableCustoms(_purchasableList);
         }
         
         private void ApplyCustomsOnPlayer()
@@ -101,12 +138,28 @@ namespace UI
         private void FillGridSpots()
         {
             ClearGridSpots();
-            var filterItems = _purchasableList.FindAll(model => model.ObjectsType == _currentSection);
-            filterItems.Sort((a,b) => a.Price.CompareTo(b.Price));
-            if (filterItems.Count == 0) return;
-            for (int i = 0; i < filterItems.Count; i++)
+            var filterPurchasableItems = _purchasableList.FindAll(model => model.ObjectsType == _currentSection);
+            var filterPurchasedItems = _purchasedList.FindAll(model => model.ObjectsType == _currentSection);
+            SortGridLists(filterPurchasableItems,filterPurchasedItems);
+            InitializeGridSpots(filterPurchasableItems, filterPurchasedItems);
+        }
+        
+        private void SortGridLists(List<CustomDataModel> filterPurchasableItems, List<CustomDataModel> filterPurchasedItems)
+        {
+            filterPurchasableItems.Sort((a,b) => a.Price.CompareTo(b.Price));
+            filterPurchasedItems.Sort((a,b) => a.Price.CompareTo(b.Price));
+        }
+
+        private void InitializeGridSpots(List<CustomDataModel> filterPurchasableItems, List<CustomDataModel> filterPurchasedItems)
+        {
+            for (int i = 0; i < filterPurchasableItems.Count; i++)
             {
-                gridSpots[i].ShowIcon(filterItems[i]);
+                gridSpots[i].ShowIcon(filterPurchasableItems[i]);
+            }
+
+            for (int i = filterPurchasableItems.Count; i < filterPurchasedItems.Count + filterPurchasableItems.Count; i++)
+            {
+                gridSpots[i].ShowIcon(filterPurchasedItems[i - filterPurchasableItems.Count]);
             }
         }
 
@@ -122,6 +175,26 @@ namespace UI
             {
                 gridSpot.HideIcon();
             }
+        }
+
+        private void UnsubscribeActions()
+        {
+            foreach (var sectionCustomIcon in sectionCustomIcons)
+            {
+                sectionCustomIcon.onSectionClicked -= ChangeCurrentSection;
+            }
+            foreach (var gridSpot in gridSpots)
+            {
+                gridSpot.onButtonClicked -= CustomChoose;
+            }
+
+            buySection.onPurchased -= CustomPurchased;
+            buySection.onSell -= CustomSold;
+        }
+
+        private void OnDestroy()
+        {
+            UnsubscribeActions();
         }
     }
 }

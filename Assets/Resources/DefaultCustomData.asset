@@ -15,32 +15,32 @@ MonoBehaviour:
   CustomDataModels:
   - ObjectsType: 0
     Color: {r: 0.44705883, g: 0.29411766, b: 0.105882354, a: 1}
-    Price: 0
+    Price: 100
     IsEquipped: 1
     IsPurchased: 1
   - ObjectsType: 1
     Color: {r: 0.4862745, g: 0.5568628, b: 0.6313726, a: 1}
-    Price: 0
+    Price: 100
     IsEquipped: 1
     IsPurchased: 1
   - ObjectsType: 2
     Color: {r: 0.8862745, g: 0.7176471, b: 0.5372549, a: 1}
-    Price: 0
+    Price: 100
     IsEquipped: 1
     IsPurchased: 1
   - ObjectsType: 3
     Color: {r: 0.33333334, g: 0.10980392, b: 0.10980392, a: 1}
-    Price: 0
+    Price: 100
     IsEquipped: 1
     IsPurchased: 1
   - ObjectsType: 4
     Color: {r: 0.10980392, g: 0.21568628, b: 0.33333334, a: 1}
-    Price: 0
+    Price: 100
     IsEquipped: 1
     IsPurchased: 1
   - ObjectsType: 5
     Color: {r: 0.3137255, g: 0.18431373, b: 0.21176471, a: 1}
-    Price: 0
+    Price: 100
     IsEquipped: 1
     IsPurchased: 1
   - ObjectsType: 0
