@@ -20,7 +20,6 @@ namespace UI
         private List<CustomDataModel> _purchasableList;
         private List<CustomDataModel> _equippedList;
         private List<CustomDataModel> _purchasedList;
-        // private List<ObjectIcon> _choosingCustomIcons;
         private Player _player;
         private ObjectsType _currentSection;
 

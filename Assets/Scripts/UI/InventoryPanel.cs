@@ -120,8 +120,7 @@ namespace UI
         
         private void ApplyCustomsOnPlayer()
         {
-            var modelList = equippedCustomIcons.Select(equippedCustomIcon => equippedCustomIcon.GetCustomDataModel()).ToList();
-            _player.CustomHandler.ChangeCustom(modelList);
+            _player.CustomHandler.ChangeCustom(_equippedList);
         }
 
         protected override void CloseDialog()
