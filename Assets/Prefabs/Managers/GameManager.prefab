@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  environmentData: {fileID: 11400000, guid: 63711141294716e42bf16655528a7996, type: 2}

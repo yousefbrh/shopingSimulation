@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Components;
 using Enums;
 using Models;
 using UI;
@@ -15,6 +16,7 @@ namespace Managers
         [SerializeField] private TypingPanelPanel typingPanelPanel;
         [SerializeField] private InventoryPanel inventoryPanel;
         [SerializeField] private ShopPanel shopPanel;
+        [SerializeField] private UIFader uiFader;
 
         private List<Panel> _openPanels = new List<Panel>();
 
@@ -78,6 +80,16 @@ namespace Managers
             _openPanels.Remove(panel);
             panel.onDialogClosed = null;
             Destroy(panel.gameObject);
+        }
+
+        public void FadeScreen(Action callback)
+        {
+            uiFader.StartFading(callback);
+        }
+
+        public void ClearScreen(Action callback)
+        {
+            uiFader.StopFading(callback);
         }
     }
 }
