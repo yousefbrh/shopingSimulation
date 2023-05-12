@@ -60,6 +60,7 @@ namespace Managers
         private void EnvironmentChanger(EnvironmentType environmentType)
         {
             _currentEnvironmentModel.EnvironmentType = environmentType;
+            player.Movement.StopMovement();
             UIManager.Instance.FadeScreen(PrepareToCreateEnvironment);
         }
 
@@ -83,7 +84,7 @@ namespace Managers
 
         private void EnvironmentCreationFinished()
         {
-            
+            player.Movement.StartMovement();
         }
     }
 }

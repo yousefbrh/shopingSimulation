@@ -1,4 +1,5 @@
 using System;
+using Managers;
 using UnityEngine;
 
 namespace UI
@@ -16,6 +17,7 @@ namespace UI
         protected virtual void Start()
         {
             transform.localScale = Vector3.zero;
+            GameManager.Instance.Player.Movement.StopMovement();
         }
 
         private void Update()
@@ -47,6 +49,7 @@ namespace UI
             _canApplyAction = true;
             _isShowing = false;
             _tempTime = 0;
+            GameManager.Instance.Player.Movement.StartMovement();
         }
     }
 }

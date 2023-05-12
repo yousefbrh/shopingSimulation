@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private Animator animator;
     private Vector2 _inputMovement;
+    private bool _canMove = true;
     private static readonly int X = Animator.StringToHash("X");
     private static readonly int Y = Animator.StringToHash("Y");
 
@@ -20,6 +21,7 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!_canMove) return;
         switch (_inputMovement.x)
         {
             case > 0:
@@ -51,5 +53,15 @@ public class Movement : MonoBehaviour
     private void InputMovementChanged(Vector2 value)
     {
         _inputMovement = value;
+    }
+
+    public void StartMovement()
+    {
+        _canMove = true;
+    }
+    public void StopMovement()
+    {
+        _canMove = false;
+        _inputMovement = Vector2.zero;
     }
 }
