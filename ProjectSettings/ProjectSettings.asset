@@ -153,9 +153,10 @@ PlayerSettings:
   resolutionScalingMode: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.DefaultCompany.BlueGravityInterviewTask
   buildNumber:
-    Standalone: 0
+    Standalone: 0.1
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 0
