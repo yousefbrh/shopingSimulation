@@ -28,12 +28,12 @@ namespace Managers
                 Instance = this;
                 DontDestroyOnLoad(this);
             }
+            InitializeCurrency();
         }
 
         private void Start()
         {
             FillVariables();
-            InitializeCurrency();
             InitializeEnvironment();
         }
 

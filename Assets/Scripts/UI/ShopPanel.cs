@@ -25,8 +25,9 @@ namespace UI
         private ObjectsType _currentSection;
         private InventoryManager _inventory;
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             FillVariables();
             SubscribeActions();
             SetCustomIcons();

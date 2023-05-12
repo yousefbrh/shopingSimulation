@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Components;
+using DefaultNamespace;
 using Enums;
 using Models;
+using TMPro;
 using UI;
 using UnityEditor;
 using UnityEngine;
@@ -17,6 +19,7 @@ namespace Managers
         [SerializeField] private InventoryPanel inventoryPanel;
         [SerializeField] private ShopPanel shopPanel;
         [SerializeField] private UIFader uiFader;
+        [SerializeField] private TextMeshProUGUI currencyText;
 
         private List<Panel> _openPanels = new List<Panel>();
 
@@ -37,7 +40,19 @@ namespace Managers
 
         private void Start()
         {
+            FillVariables();
+            SubscribeAction();
+        }
+
+        private void FillVariables()
+        {
+            currencyText.text = CurrencyHandler.CurrentMoney.ToString();
+        }
+
+        private void SubscribeAction()
+        {
             InputManager.Instance.onInventoryCallsToOpen += OpenInventory;
+            CurrencyHandler.onValueChanged += CurrencyChanged;
         }
 
         public void ShowTypingDialogPanel(DialogType type)
@@ -90,6 +105,11 @@ namespace Managers
         public void ClearScreen(Action callback)
         {
             uiFader.StopFading(callback);
+        }
+
+        private void CurrencyChanged(int value)
+        {
+            currencyText.text = value.ToString();
         }
     }
 }

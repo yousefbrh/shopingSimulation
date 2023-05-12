@@ -7,7 +7,7 @@ namespace DefaultNamespace
         private static int _currentMoney;
 
         public static int CurrentMoney => _currentMoney;
-        public static Action<bool> onValueChanged;
+        public static Action<int> onValueChanged;
 
         public static void Initialize()
         {
@@ -18,7 +18,7 @@ namespace DefaultNamespace
         {
             _currentMoney += value;
             SaveMoney();
-            onValueChanged?.Invoke(true);
+            onValueChanged?.Invoke(_currentMoney);
         }
 
         private static void SaveMoney()
@@ -30,7 +30,7 @@ namespace DefaultNamespace
         {
             _currentMoney -= value;
             SaveMoney();
-            onValueChanged?.Invoke(false);
+            onValueChanged?.Invoke(_currentMoney);
         }
 
         public static bool CanDecrease(int value)

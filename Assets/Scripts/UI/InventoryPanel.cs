@@ -24,8 +24,9 @@ namespace UI
         private List<CustomDataModel> _purchasedList;
         private ObjectsType _currentSection;
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             FillVariables();
             SubscribeActions();
             SetCustomIcons();

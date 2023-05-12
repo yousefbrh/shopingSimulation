@@ -10,7 +10,7 @@ namespace UI
         [SerializeField] private TextMeshProUGUI text;
         [SerializeField] private TypeWriterUI typeWriterUI;
         [SerializeField] private float timeToCloseDialogAfterTextFullyAppeared;
-        
+            
         public override void Initialize()
         {
             base.Initialize();

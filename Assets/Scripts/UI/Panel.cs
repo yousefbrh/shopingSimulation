@@ -13,6 +13,11 @@ namespace UI
         private bool _canApplyAction;
         private float _tempTime;
 
+        protected virtual void Start()
+        {
+            transform.localScale = Vector3.zero;
+        }
+
         private void Update()
         {
             if (!_canApplyAction) return;
