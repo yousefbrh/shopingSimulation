@@ -12,7 +12,7 @@ namespace DefaultNamespace
     {
         public static int Money
         {
-            get => PlayerPrefs.GetInt("Money", 1000);
+            get => PlayerPrefs.GetInt("Money", 10000);
             set => PlayerPrefs.SetInt("Money", value);
         }
         private static string CustomData
