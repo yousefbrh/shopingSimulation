@@ -32,6 +32,12 @@ namespace UI
             SubscribeActions();
             SetCustomIcons();
             FillGridSpots();
+            ActiveDefaultSectionBorder();
+        }
+        
+        private void ActiveDefaultSectionBorder()
+        {
+            sectionCustomIcons.First().BorderActiveHandler(true);
         }
         
         private void FillVariables()
@@ -133,7 +139,16 @@ namespace UI
         private void ChangeCurrentSection(ObjectsType objectsType)
         {
             _currentSection = objectsType;
+            DeactiveAllSectionBorders();
             FillGridSpots();
+        }
+        
+        private void DeactiveAllSectionBorders()
+        {
+            foreach (var sectionCustomIcon in sectionCustomIcons)
+            {
+                sectionCustomIcon.BorderActiveHandler(false);
+            }
         }
         
         private void FillGridSpots()

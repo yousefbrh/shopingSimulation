@@ -13,6 +13,7 @@ namespace UI
         [SerializeField] private ObjectsType objectsType;
         [SerializeField] private Transform iconSpot;
         [SerializeField] private Button actionButton;
+        [SerializeField] private GameObject border;
 
         public ObjectsType ObjectsType => objectsType;
         
@@ -28,6 +29,12 @@ namespace UI
         private void ButtonClicked()
         {
             onSectionClicked?.Invoke(objectsType);
+            BorderActiveHandler(true);
+        }
+
+        public void BorderActiveHandler(bool isActive)
+        {
+            border.SetActive(isActive);
         }
     }
 }

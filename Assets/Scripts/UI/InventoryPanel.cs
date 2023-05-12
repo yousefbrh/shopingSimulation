@@ -31,6 +31,12 @@ namespace UI
             SubscribeActions();
             SetCustomIcons();
             FillInventorySpots();
+            ActiveDefaultSectionBorder();
+        }
+
+        private void ActiveDefaultSectionBorder()
+        {
+            sectionCustomIcons.First().BorderActiveHandler(true);
         }
 
         private void FillVariables()
@@ -58,7 +64,16 @@ namespace UI
         private void ChangeCurrentSection(ObjectsType objectsType)
         {
             _currentSection = objectsType;
+            DeactiveAllSectionBorders();
             FillInventorySpots();
+        }
+
+        private void DeactiveAllSectionBorders()
+        {
+            foreach (var sectionCustomIcon in sectionCustomIcons)
+            {
+                sectionCustomIcon.BorderActiveHandler(false);
+            }
         }
 
         private void CustomChoose(CustomDataModel customDataModel, GridSpot gridSpot)
@@ -131,6 +146,25 @@ namespace UI
             InventoryManager.Instance.SetEquippedCustoms(_equippedList);
             InventoryManager.Instance.SetPurchasedCustoms(_purchasedList);
             exitButton.onClick.RemoveAllListeners();
+        }
+        
+        private void UnsubscribeActions()
+        {
+            exitButton.onClick.RemoveAllListeners();
+
+            foreach (var sectionCustomIcon in sectionCustomIcons)
+            {
+                sectionCustomIcon.onSectionClicked -= ChangeCurrentSection;
+            }
+            foreach (var gridSpot in gridSpots)
+            {
+                gridSpot.onButtonClicked -= CustomChoose;
+            }
+        }
+
+        private void OnDestroy()
+        {
+            UnsubscribeActions();
         }
     }
 }
