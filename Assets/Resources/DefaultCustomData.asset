@@ -45,21 +45,151 @@ MonoBehaviour:
     IsPurchased: 1
   - ObjectsType: 0
     Color: {r: 1, g: 0, b: 0.21212101, a: 1}
-    Price: 100
-    IsEquipped: 0
-    IsPurchased: 0
-  - ObjectsType: 0
-    Color: {r: 0.040961742, g: 1, b: 0, a: 1}
     Price: 200
     IsEquipped: 0
     IsPurchased: 0
   - ObjectsType: 0
     Color: {r: 0.040961742, g: 1, b: 0, a: 1}
-    Price: 200
+    Price: 250
     IsEquipped: 0
     IsPurchased: 0
   - ObjectsType: 0
-    Color: {r: 0.040961742, g: 1, b: 0, a: 1}
+    Color: {r: 0, g: 1, b: 0.9717827, a: 1}
+    Price: 300
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 0
+    Color: {r: 0, g: 0.22552013, b: 1, a: 1}
+    Price: 350
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 0
+    Color: {r: 0.8967657, g: 0, b: 1, a: 1}
+    Price: 400
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 0
+    Color: {r: 1, g: 0.51675415, b: 0, a: 1}
+    Price: 450
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 1
+    Color: {r: 1, g: 0.97088087, b: 0, a: 1}
     Price: 200
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 1
+    Color: {r: 1, g: 0, b: 0.0841527, a: 1}
+    Price: 250
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 1
+    Color: {r: 1, g: 0, b: 0.8089566, a: 1}
+    Price: 300
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 1
+    Color: {r: 0.36383677, g: 0, b: 1, a: 1}
+    Price: 350
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 1
+    Color: {r: 0, g: 1, b: 0.932251, a: 1}
+    Price: 400
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 2
+    Color: {r: 0.010012442, g: 0.7075472, b: 0.1868009, a: 1}
+    Price: 200
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 2
+    Color: {r: 0.7058824, g: 0.67546654, b: 0.011764695, a: 1}
+    Price: 250
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 2
+    Color: {r: 0.7058824, g: 0.011764695, b: 0.10144204, a: 1}
+    Price: 300
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 2
+    Color: {r: 0.011764695, g: 0.39253563, b: 0.7058824, a: 1}
+    Price: 400
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 3
+    Color: {r: 0.1549208, g: 0.7058824, b: 0.011764695, a: 1}
+    Price: 200
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 3
+    Color: {r: 0.754717, g: 0.7494107, b: 0, a: 1}
+    Price: 250
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 3
+    Color: {r: 0.7529412, g: 0, b: 0.64902204, a: 1}
+    Price: 300
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 3
+    Color: {r: 0, g: 0.03072402, b: 0.7529412, a: 1}
+    Price: 350
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 3
+    Color: {r: 0, g: 0.73687583, b: 0.7529412, a: 1}
+    Price: 400
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 4
+    Color: {r: 0, g: 0.7529412, b: 0.17604999, a: 1}
+    Price: 200
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 4
+    Color: {r: 0.7328626, g: 0.7529412, b: 0, a: 1}
+    Price: 250
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 4
+    Color: {r: 0.7529412, g: 0, b: 0.72210157, a: 1}
+    Price: 300
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 4
+    Color: {r: 0, g: 0.74233025, b: 0.7529412, a: 1}
+    Price: 350
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 4
+    Color: {r: 0.7529412, g: 0.39264005, b: 0, a: 1}
+    Price: 400
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 5
+    Color: {r: 0, g: 0.754717, b: 0.093656935, a: 1}
+    Price: 200
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 5
+    Color: {r: 0.7386448, g: 0.7529412, b: 0, a: 1}
+    Price: 250
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 5
+    Color: {r: 0.7529412, g: 0.34779605, b: 0, a: 1}
+    Price: 300
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 5
+    Color: {r: 0.7529412, g: 0, b: 0.7427609, a: 1}
+    Price: 350
+    IsEquipped: 0
+    IsPurchased: 0
+  - ObjectsType: 5
+    Color: {r: 0, g: 0.7377248, b: 0.7529412, a: 1}
+    Price: 400
     IsEquipped: 0
     IsPurchased: 0
